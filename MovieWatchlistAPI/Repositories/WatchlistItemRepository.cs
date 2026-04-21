@@ -59,6 +59,7 @@ public class WatchlistItemRepository : IWatchlistItemRepository
         var userId = user.Id;
 
         var watchlistItem = await _context.WatchlistItem
+            .Include(w => w.Movie)
             .FirstOrDefaultAsync(w => w.MovieId == id && w.UserId == userId);
 
         if (watchlistItem is null)
@@ -95,7 +96,8 @@ public class WatchlistItemRepository : IWatchlistItemRepository
 
         var userId = user.Id;
 
-        var watchlistItem = await _context.WatchlistItem.FindAsync(movie.Id, userId);
+        var watchlistItem = await _context.WatchlistItem
+            .FirstOrDefaultAsync(w => w.MovieId == id && w.UserId == userId);
 
         if (watchlistItem is null)
             return false;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MovieWatchlistAPI.DTO;
 using MovieWatchlistAPI.Models;
@@ -6,6 +7,7 @@ using MovieWatchlistAPI.Repositories;
 
 namespace MovieWatchlistAPI.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class WatchlistController : ControllerBase

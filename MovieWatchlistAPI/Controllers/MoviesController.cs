@@ -18,6 +18,7 @@ public class MoviesController : ControllerBase
         _repo = repo;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<List<MovieResponseDto>>> GetMovies()
     {
@@ -34,6 +35,7 @@ public class MoviesController : ControllerBase
         return Ok(mappedMovies);
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<MovieResponseDto>> GetMovieById(int id)
     {
